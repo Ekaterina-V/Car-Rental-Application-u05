@@ -1,0 +1,9 @@
+{% block carEdited %}
+  <h1>Car Edited</h1>
+
+  <p>A {{carColor}} {{carModel}} from {{carYear}} with registration number {{carRegistrationNumber}} has been edited.</p>
+
+  <form method="post" action="/">
+    <input type="submit" value="Ok">
+  </form>
+{% endblock %}

@@ -1,0 +1,111 @@
+{
+  "": {
+    "controller": "Main",
+    "method": "mainMenu"
+  },
+
+  "customerList": {
+    "controller": "Customer",
+    "method": "listCustomers"
+  },
+
+  "addCustomer": {
+    "controller": "Customer",
+    "method": "addCustomer"
+  },
+
+  "customerAdded": {
+    "controller": "Customer",
+    "method": "customerAdded"
+  },
+
+  "editCustomer/:customerPersonalNumber": {
+    "controller": "Customer",
+    "method": "editCustomer",
+    "params": {
+      "customerPersonalNumber": "number"
+    }
+  },
+
+  "customerEdited": {
+    "controller": "Customer",
+    "method": "customerEdited"
+  },
+
+  "removeCustomer/:customerPersonalNumber/:customerName/:customerAddress/:customerPostalAddress/:customerPhoneNumber": {
+    "controller": "Customer",
+    "method": "removeCustomer",
+    "params": {
+      "customerPersonalNumber": "number",
+      "customerName": "string",
+      "customerAddress": "string",
+      "customerPostalAddress": "string",
+      "customerPhoneNumber": "number"
+    }
+  },
+
+  "carList": {
+    "controller": "Car",
+    "method": "carList"
+  },
+
+  "addCar": {
+    "controller": "Car",
+    "method": "addCar"
+  },
+
+  "carAdded": {
+    "controller": "Car",
+    "method": "carAdded"
+  },
+
+  "editCar/:carRegistrationNumber": {
+    "controller": "Car",
+    "method": "editCar",
+    "params": {
+      "carRegistrationNumber": "string"
+    }
+  },
+
+  "carEdited": {
+    "controller": "Car",
+    "method": "carEdited"
+  },
+
+  "removeCar/:carRegistrationNumber/:carModel/:carColor/:carYear/:carPrice": {
+    "controller": "Car",
+    "method": "removeCar",
+    "params": {
+      "carRegistrationNumber": "string",
+      "carModel": "string",
+      "carColor": "string",
+      "carYear": "number",
+      "carPrice": "number"
+    }
+  },
+
+  "checkOut": {
+    "controller": "Car",
+    "method": "checkOut"
+  },
+
+  "carCheckedOut": {
+    "controller": "Car",
+    "method": "carCheckedOut"
+  },
+
+  "checkIn": {
+    "controller": "Car",
+    "method": "checkIn"
+  },
+
+  "carCheckedIn": {
+    "controller": "Car",
+    "method": "carCheckedIn"
+  },
+
+  "historyView": {
+    "controller": "History",
+    "method": "listHistory"
+  }
+}

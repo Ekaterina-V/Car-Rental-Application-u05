@@ -1,0 +1,71 @@
+{% block CarsView %}
+  <style>
+    .column {
+      width: 20mm;
+    }
+
+    .button {
+      width: 100%;
+    }
+  </style>
+
+  <table border>
+    <tr>
+      <td colspan = "9" align="center"><h1>Cars</h1></td>
+    </tr>
+
+    <tr>
+      <th colspan = "1">Registration</th>
+      <th colspan = "1">Car Model</th>
+      <th colspan = "1">Color</th>
+      <th colspan = "1">Year</th>
+      <th colspan = "1">Price</th>
+      <th colspan = "1">Checked out by</th>
+      <th colspan = "1">Checked out time</th>
+      <th colspan = "1"></th>
+      <th colspan = "1"></th>
+    </tr>
+
+    {% for car in cars %}
+      <tr>
+        <td colspan = "1">{{car.carRegistrationNumber}}</td>
+        <td colspan = "1">{{car.carModel}}</td>
+        <td colspan = "1">{{car.carColor}}</td>
+        <td colspan = "1">{{car.carYear}}</td>
+        <td colspan = "1">{{car.carPrice}}</td>
+        {% if car.checkedOutBy %}
+          <td colspan = "1">{{car.checkedOutBy}}</td>
+          <td colspan = "1">{{car.checkedOutTime}}</td>
+        {% else %}
+          <td colspan="2">Free</td>
+        {% endif %}
+
+        <td colspan = "1">
+          <form method="post" action="/editCar/{{car.carRegistrationNumber}}">
+            <input type="submit" style="width:100%" value="Edit"{% if car.checkedOutBy %}disabled{% endif %}>
+          </form>
+        </td>
+
+        <td>
+          <form method="post" action="/removeCar/{{car.carRegistrationNumber}}/{{car.carModel}}/{{car.carColor}}/{{car.carYear}}/{{car.carPrice}}"
+                onsubmit="return confirm('Are you sure you want to remove car {{car.carRegistrationNumber}}?')">
+            <input type="submit" style="width:100%" value="Remove"{% if car.checkedOutBy %}disabled{% endif %}>
+          </form>
+        </td>
+
+      </tr>
+    {% endfor %}
+
+    <tr>
+      <td colspan="9">
+        <form action="/addCar" method="post">
+          <input type="submit" style="width:100%" value="Add Car">
+        </form>
+        <form action="/" method="post">
+            <input type="submit" style="width:100%" value="Main Menu">
+        </form>
+      </td>
+    </tr>
+
+  </table>
+{% endblock %}

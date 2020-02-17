@@ -1,0 +1,37 @@
+{% block checkIn %}
+
+<style>
+    table, tr, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Check In</h1>
+<table>
+    <form method="post" action="/carCheckedIn">
+        <tr>
+            <td>Car:</td>
+            <td>
+                <select name="carRegistrationNumber" style="width:100%">
+                    {% for car in cars %}
+                        <option value="{{car.carRegistrationNumber}}">{{car.carRegistrationNumber}} {{car.carColor}} {{car.carModel}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" style="width:100%" value="Check In">
+            </td>
+        </tr>
+    </form>
+    <form method="post" action="/">
+        <tr>
+            <td colspan="2">
+                <input type="submit" style="width:100%" value="Main Menu">
+            </td>
+        </tr>
+    </form>
+</table>
+
+{% endblock %}

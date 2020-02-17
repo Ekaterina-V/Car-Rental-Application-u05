@@ -1,0 +1,102 @@
+{% block addCar %}
+
+<style>
+    table, tr, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Add Car</h1>
+<table>
+    <form method="post" action="/carAdded" onsubmit="return validate();">
+    <tr>
+        <td>Registration number:</td>
+        <td><input type="text" name="carRegistrationNumber" id="carRegistrationNumber">
+        </td>
+    </tr>
+    <tr>
+        <td>Car Model:</td>
+        <td>
+        <select name="carModel" style="width:100%">
+            <option value="" selected disabled hidden>--Select a Model--</option>
+            {% for carModel in carModels %}
+                <option value="{{carModel}}">{{carModel}}</option>
+            {% endfor %}
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Car Color:</td>
+        <td>
+        <select name="carColor" style="width:100%">
+            <option value="" selected disabled hidden>--Select a Color--</option>
+            {% for carColor in carColors %}
+                <option value="{{carColor}}">{{carColor}}</option>
+            {% endfor %}
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Car Year:</td>
+        <td><input type="text" name="carYear" id="carYear">
+        </td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td><input type="text" name="carPrice" id="carPrice">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="submit" style="width:100%" value="Add">
+        </td>
+    </tr>
+    </form>
+
+    <tr>
+        <td colspan="2">
+            <form method="post" action="/carList">
+                <input type="submit" style="width:100%" value="Cars">
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+
+<p>
+<form method="post" action="/">
+    <input type="submit" value="Main Menu">
+</form>
+
+<script>
+    function validate() {
+        let num = document.getElementById("carRegistrationNumber").value;
+
+        if (!num.match(/^([A-Z]){3}[0-9]{2}([A-Z]|[0-9])$/)) {
+            alert("Invalid car registration number.");
+            return false;
+        }
+
+
+        let year = document.getElementById("carYear").value;
+
+        if (!year.match(/^[0-9]{4}$/)) {
+            alert("Invalid year: year must have 4 digits.");
+            return false;
+        }
+
+        if (year > 2019 || year < 1900) {
+            alert("Invalid year: year must be between 1900 and 2019");
+            return false;
+        }
+
+        let price = document.getElementById("carPrice").value;
+        if (price < 0) {
+            alert("Price must be positive.");
+            return false;
+        }
+
+        return true;
+    }
+</script>

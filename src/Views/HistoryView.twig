@@ -1,0 +1,51 @@
+{% block CarsHistory %}
+  <style>
+    .column {
+      width: 20mm;
+    }
+
+    .button {
+      width: 100%;
+    }
+  </style>
+
+  <table border>
+    <tr>
+      <td colspan = "6" align="center"><h1>History</h1></td>
+    </tr>
+
+    <tr>
+      <th colspan = "1">Registration Number</th>
+      <th colspan = "1">Personal Number</th>
+      <th colspan = "1">Check Out Time</th>
+      <th colspan = "1">Check In Time</th>
+      <th colspan = "1">Days</th>
+      <th colspan = "1">Cost</th>
+    </tr>
+
+    {% for h in history %}
+      <tr>
+        <td colspan = "1">{{h.carRegistrationNumber}}</td>
+        <td colspan = "1">{{h.customerPersonalNumber}}</td>
+        <td colspan = "1">{{h.checkedOutTime}}</td>
+        <td colspan = "1">{{h.checkedInTime}}</td>
+        <td colspan = "1">{{h.days}}</td>
+        <td colspan = "1">{{h.cost}}</td>
+      </tr>
+    {% endfor %}
+
+    <tr>
+      <td colspan="5">Sum</td>
+      <td colspan="1">{{totalCost}}</td>
+    </tr>
+
+    <tr>
+      <td colspan="6">
+        <form action="/" method="post">
+          <input type="submit" style="width:100%" value="Main Menu">
+        </form>
+      </td>
+    </tr>
+
+  </table>
+{% endblock %}

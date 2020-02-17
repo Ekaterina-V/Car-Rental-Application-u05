@@ -1,0 +1,72 @@
+{% block checkOut %}
+
+<style>
+    table, tr, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Check Out</h1>
+<table>
+    <form method="post" action="/carCheckedOut" onsubmit="return validateIndex();">
+        <tr>
+            <td>Customer:</td>
+            <td>
+                <select name="customerPersonalNumber" id="customer" style="width:100%">
+                    <option value="" selected disabled hidden>--Select a Customer--</option>
+                    {% for customer in customers %}
+                    <option value="{{customer.customerPersonalNumber}}">{{customer.customerPersonalNumber}} {{customer.customerName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Car:</td>
+            <td>
+                <select name="carRegistrationNumber" id="car" style="width:100%">
+                    <option value="" selected disabled hidden>--Select a Car--</option>
+                    {% for car in cars %}
+                    <option value="{{car.carRegistrationNumber}}">{{car.carRegistrationNumber}} {{car.carColor}} {{car.carModel}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" style="width:100%" value="Check Out">
+            </td>
+        </tr>
+    </form>
+    <form method="post" action="/">
+        <tr>
+            <td colspan="2">
+                <input type="submit" style="width:100%" value="Main Menu">
+            </td>
+        </tr>
+    </form>
+</table>
+
+{% endblock %}
+
+<script>
+    function validateIndex() {
+        let car = document.getElementById("car");
+        let car_value = car.options[car.selectedIndex].value;
+
+        if (car_value === "") {
+            alert("No car selected.");
+            return false;
+        }
+
+        let customer = document.getElementById("customer");
+        let customer_value = customer.options[customer.selectedIndex].value;
+
+        if (customer_value === "") {
+            alert("No customer selected.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+

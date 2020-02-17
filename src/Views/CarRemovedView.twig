@@ -1,0 +1,14 @@
+{% block carRemoved %}
+  <h1>Car Removed</h1>
+
+  {% if (numberOfCars == 0) %}
+    <p> A {{carColor}} {{carModels}} from {{carYear}} with registration number {{carRegistrationNumber}} has been removed.</p>
+  {% else %}
+    <p><i> A {{carColor}} {{carModels}} from {{carYear}} with registration number {{carRegistrationNumber}}
+       cannot be removed since they own {{customerPersonalNumber}} cars.</i></p>
+  {% endif %}
+  
+  <form method="post" action="/">
+    <input type="submit" value="Ok">
+  </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% block customerAdded %}
+    <h1>Customer Added</h1>
+
+    <p>Customer {{customerName}}, living at {{customerAddress}}, {{customerPostalAddres}} with personal number {{customerPersonalNumber}} and phone number {{customerPhoneNumber}} has been added.</p>
+
+    <form method="post" action="/">
+        <input type="submit" value="Ok">
+    </form>
+{% endblock %}

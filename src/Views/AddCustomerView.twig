@@ -1,0 +1,126 @@
+{% block addCustomer %}
+
+<style>
+    table, tr, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Add Customer</h1>
+
+<table>
+    <form method="post" action="/customerAdded" onsubmit="return validate();">
+    <tr>
+        <td>Personal Number:</td>
+        <td>
+            <input type="text" name="customerPersonalNumber" id="customerPersonalNumber">
+        </td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td>
+            <input type="text" name="customerName">
+        </td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td>
+            <input type="text" name="customerAddress">
+        </td>
+    </tr>
+    <tr>
+        <td>Postal Address:</td>
+        <td>
+            <input type="text" name="customerPostalAddress">
+        </td>
+    </tr>
+    <tr>
+        <td>Phone Number:</td>
+        <td>
+            <input type="text" name="customerPhoneNumber" id="customerPhoneNumber">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="submit" style="width:100%"  value="Add">
+        </td>
+    </tr>
+    </form>
+    <tr>
+        <td colspan="2">
+            <form method="post" action="/customerList">
+                <input type="submit" style="width:100%"  value="Customers">
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+
+<script>
+    function validate() {
+        let pn = document.getElementById("customerPersonalNumber").value;
+
+        if (!pn.match(/^.{10}$/)) {
+            alert("Wrong length of the personal number");
+            return false;
+        }
+
+        if (!pn.match(/^[0-9]{10}$/)) {
+            alert("Only numbers are allowed in the personal number");
+            return false;
+        }
+
+        if (!pn.match(/^([0-9][0-9]).{8}$/)) {
+            alert("Wrong year in the personal number");
+            return false;
+        }
+
+
+        if (!pn.match(/^.{2}(0[1-9]|1[0-2]).{6}$/)) {
+            alert("Wrong month in the personal number");
+            return false;
+        }
+
+        if (!pn.match(/^.{4}(0[1-9]|[1-2][0-9]|3[0-1]).{4}$/)) {
+            alert("Wrong day in the personal number");
+            return false;
+        }
+
+        // Calculate control digit
+        var pnsplit = pn.split("");
+        mul = (pnsplit[0] * 2).toString() + (pnsplit[1] * 1).toString() + (pnsplit[2] * 2).toString() +
+            (pnsplit[3] * 1).toString() + (pnsplit[4] * 2).toString() + (pnsplit[5] * 1).toString() +
+            (pnsplit[6] * 2).toString() + (pnsplit[7] * 1).toString() + (pnsplit[8] * 2).toString();
+
+        function add(accumulator, a) {
+            return accumulator + parseInt(a);
+        }
+
+        var result = mul.split("").reduce(add, 0);
+        result = 10 - (result % 10);
+
+        if (parseInt(pn.substring(9, 10)) !== result ){
+            alert("Invalid control digit in personal number");
+            return false;
+        }
+
+
+        let phoneNumber = document.getElementById("customerPhoneNumber").value;
+
+        if (!phoneNumber.match(/^.{10}$/)) {
+            alert("Wrong length of the phone number");
+            return false;
+        }
+        if (!phoneNumber.match(/^[0-9]{10}$/)) {
+            alert("Only numbers are allowed in the phone number");
+            return false;
+        }
+        if (!phoneNumber.match(/^[0].{9}$/)) {
+            alert('The phone number must start with 0');
+            return false;
+        }
+
+        return true;
+    }
+</script>

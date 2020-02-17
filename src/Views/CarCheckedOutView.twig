@@ -1,0 +1,9 @@
+{% block carCheckedOut %}
+  <h1>Car Checked Out</h1>
+
+  <p>A car with registration number {{carRegistrationNumber}} has been checked out by customer with personal number {{customerPersonalNumber}}.</p>
+
+  <form method="post" action="/">
+    <input type="submit" value="Ok">
+  </form>
+{% endblock %}

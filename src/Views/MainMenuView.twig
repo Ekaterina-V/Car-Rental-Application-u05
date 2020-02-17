@@ -1,0 +1,30 @@
+{% block mainMenu %}
+
+<style>
+.btn-group form {
+    float: left;
+}
+</style>
+
+<h1>Car Rental</h1>
+<p>
+
+<div class="btn-group">
+    <form method="post" action="/customerList">
+        <input type="submit" value="Customers">
+    </form>
+    <form method="post" action="/carList">
+        <input type="submit" value="Cars">
+    </form>
+    <form method="post" action="/checkOut">
+        <input type="submit" value="Check Out Car">
+    </form>
+    <form method="post" action="/checkIn">
+        <input type="submit" value="Check In Car">
+    </form>
+    <form method="post" action="/historyView">
+        <input type="submit" value="History">
+    </form>
+</div>
+
+{% endblock %}

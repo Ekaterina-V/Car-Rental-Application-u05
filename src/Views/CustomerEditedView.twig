@@ -1,0 +1,9 @@
+{% block customerEdited %}
+  <h1>Customer Edited</h1>
+
+  <p> {{customerName}}, living at {{customerAddress}}, {{customerPostalAddress}} with personal number {{customerPersonalNumber}} and phone number {{customerPhoneNumber}}, has been edited.</p>
+
+  <form method="post" action="/">
+    <input type="submit" value="Ok">
+  </form>
+{% endblock %}

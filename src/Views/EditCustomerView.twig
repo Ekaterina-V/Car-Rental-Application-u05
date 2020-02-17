@@ -1,0 +1,79 @@
+{% block editCustomer %}
+
+<style>
+    table, tr, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h1>Edit Customer</h1>
+
+<table>
+    <form method="post" action="/customerEdited" onsubmit="return validate();">
+    <tr>
+        <td>Personal Number:</td>
+        <td>
+            <input type="text" name="customerPersonalNumber" value="{{customerPersonalNumber}}" autofocus="autofocus" readonly>
+        </td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td>
+            <input type="text" name="customerName" value="{{customerName}}" autofocus="autofocus">
+        </td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td>
+            <input type="text" name="customerAddress" value="{{customerAddress}}" autofocus="autofocus">
+        </td>
+    </tr>
+    <tr>
+        <td>Postal Address:</td>
+        <td>
+            <input type="text" name="customerPostalAddress" value="{{customerPostalAddress}}" autofocus="autofocus">
+        </td>
+    </tr>
+    <tr>
+        <td>Phone Number:</td>
+        <td>
+            <input type="text" name="customerPhoneNumber" value="{{customerPhoneNumber}}" autofocus="autofocus" id="customerPhoneNumber">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="submit" style="width:100%"  value="Edit">
+        </td>
+    </tr>
+    </form>
+    <tr>
+        <td colspan="2">
+            <form method="post" action="/customerList">
+              <input type="submit" style="width:100%"  value="Customers">
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+
+<script>
+    function validate() {
+        let phoneNumber = document.getElementById("customerPhoneNumber").value;
+
+        if (!phoneNumber.match(/^.{10}$/)) {
+            alert("Wrong length of the phone number");
+            return false;
+        }
+        if (!phoneNumber.match(/^[0-9]{10}$/)) {
+            alert("Only numbers are allowed in the phone number");
+            return false;
+        }
+        if (!phoneNumber.match(/^[0].{9}$/)) {
+            alert('The phone number must start with 0');
+            return false;
+        }
+
+        return true;
+    }
+</script>

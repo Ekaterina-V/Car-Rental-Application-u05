@@ -1,0 +1,71 @@
+{% block editCar %}
+
+  <style>
+    table, tr, td {
+      border: 1px solid black;
+    }
+  </style>
+
+  <h1>Car Edit</h1>
+
+  <table>
+    <form method="post" action="/carEdited">
+      <tr>
+        <td>Registration number:</td>
+        <td>
+          <input type="text" name="carRegistrationNumber" value="{{carRegistrationNumber}}" autofocus="autofocus" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td>Car Model:</td>
+        <td>
+          <select name="carModel" style="width:100%">
+            {% for model in carModels %}
+              <option value="{{model}}" {% if model == carModel %}selected{% endif %}>{{model}}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Car Color:</td>
+        <td>
+          <select name="carColor" style="width:100%">
+            {% for color in carColors %}
+              <option value="{{color}}" {% if color == carColor %}selected{% endif %}>{{color}}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Car Year:</td>
+        <td>
+          <input type="text" name="carYear" value="{{carYear}}" autofocus="autofocus">
+        </td>
+      </tr>
+      <tr>
+        <td>Price:</td>
+        <td>
+          <input type="text" name="carPrice" value="{{carPrice}}" autofocus="autofocus">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" style="width:100%" value="Edit">
+        </td>
+      </tr>
+    </form>
+    <tr>
+      <td colspan="2">
+        <form method="post" action="/carList">
+          <input type="submit" style="width:100%" value="Cars">
+        </form>
+      </td>
+    </tr>
+  </table>
+
+{% endblock %}
+
+<p>
+<form method="post" action="/">
+  <input type="submit" value="Main Menu">
+</form>
