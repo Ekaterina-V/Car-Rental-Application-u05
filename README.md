@@ -18,4 +18,6 @@ The database includes the following tables
 - history
 
 # Screenshots
-
+![Screenshot](https://github.com/Ekaterina-V/u05-car-rental/blob/master/src/assets/Screenshot%20(807).png)
+![Screenshot](https://github.com/Ekaterina-V/u05-car-rental/blob/master/src/assets/Screenshot%20(809).png)
+![Screenshot](https://github.com/Ekaterina-V/u05-car-rental/blob/master/src/assets/Screenshot%20(810).png)
